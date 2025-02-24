@@ -35,15 +35,13 @@ export default function App() {
 
     const handleOnChangePlatform = (platform: string) => {
         console.log("change", platform);
-
-        // 重置品类字段值
-        form.setFieldsValue({ category: '' });
-        form.setFields([
-          {
-            name: 'category',
-            errors: []
-          }
-        ]);
+        
+        // 当platform为空时，重置category字段
+        if (!platform) {
+            form.resetFields(['category']);
+            setCategories([]);
+            return;
+        }
 
         const platformCategories = {
             jd: ["家用电器", "手机", "数码", "电脑", "办公", "家居", "食品", "家具", "男装", "女装"],
