@@ -11,10 +11,10 @@ export default function App() {
     const [value, setValue] = useState('');
     const [userId, setUserId] = useState('');
     const [tenantKey, setTenantKey] = useState('');
+    
     const [categories, setCategories] = useState<string[]>([]);
     const [form] = Form.useForm();
 
-    console.log('test');
     useEffect(() => {
         bitable.getConfig().then(config => {
             console.log('pre sync config', config);
@@ -60,7 +60,7 @@ export default function App() {
 
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', height: '95vh' }}>
             <Flex justify="center" align="center">
                 <h5>影刀DC同步电商数据到多维表格</h5>
             </Flex>
@@ -71,7 +71,7 @@ export default function App() {
                     form={form}
                     name="basic"
                     labelCol={{ span: 2 }}
-                    wrapperCol={{ span: 30 }}
+                    wrapperCol={{ span: 29 }}
                     style={{ width: "100vw" }}
                     initialValues={{ remember: true }}
                     onFinish={handleSaveConfig}
@@ -95,7 +95,7 @@ export default function App() {
 
                     <Form.Item name="category" label="品类" rules={[{ required: true }]} >
                         <Select
-                            placeholder="选择一个获取数据的平台"
+                            placeholder="选择平台下的品类"
                             allowClear
                             disabled={categories.length === 0}
                         >
