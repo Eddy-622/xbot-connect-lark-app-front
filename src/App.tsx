@@ -60,7 +60,7 @@ export default function App() {
 
 
     return (
-        <>
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}>
             <Flex justify="center" align="center">
                 <h5>影刀DC同步电商数据到多维表格</h5>
             </Flex>
@@ -131,6 +131,6 @@ export default function App() {
                     </a>
                 </div>
             </Flex>
-        </>
+        </div>
     )
 }
