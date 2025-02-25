@@ -21,7 +21,7 @@
     "vite": "^3.0.4"
   },
   "dependencies": {
-    "@lark-base-open/connector-api": "^0.1.0",
-    "antd": "^5.14.2"
+    "@lark-base-open/connector-api": "^0.1.1",
+    "antd": "^5.24.2"
   }
 }
