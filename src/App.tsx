@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { bitable } from "@lark-base-open/connector-api";
-import { Button, Form, Select, Flex, Space } from "antd";
+import { Button, Form, Select, Flex, Space, Input } from "antd";
 
 import { UserOutlined } from "@ant-design/icons";
 
@@ -35,77 +35,40 @@ export default function App() {
     bitable.saveConfigAndGoNext(config);
   };
 
-  const handleOnChangePlatform = (platform: string) => {
-    console.log("change", platform);
-
-    const platformCategories = {
-      wei_bo: [
-        "热搜",
-        "文娱",
-        "要闻",
-        "校园热搜",
-        "体育热搜",
-        "游戏热搜",
-        "时尚热搜",
-        "美妆热搜",
-        "汽车热搜",
-        "旅游热搜",
-        "科技数码热搜",
-        "母婴热搜",
-        "健康热搜",
-      ],
-      bai_du: ["全部热搜", "小说", "电影", "电视剧", "汽车", "游戏"],
-    };
-
-    const categories =
-      platformCategories[platform as keyof typeof platformCategories] || [];
-
-    if (categories.length !== 0) {
-      form.setFieldValue("category", categories[0]);
-    }
-    setCategories(categories);
-  };
-
   const useDocLink = "#";
   const helpDeskLink = "#";
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "95vh" }}>
       <Flex justify="center" align="center">
-        <h4>影刀DC同步热搜榜单到多维表格</h4>
+        <h4>影刀DC同步抖音数据到多维表格</h4>
       </Flex>
 
       <Flex justify="center">
         <Form
           form={form}
           name="basic"
-          //   labelCol={{ span: 2 }}
-          //   wrapperCol={{ span: 29 }}
           style={{ width: "100vw" }}
           initialValues={{ remember: true }}
           onFinish={handleSaveConfig}
           autoComplete="off"
         >
-          <Form.Item name="platform" label="平台" rules={[{ required: true }]}>
-            <Select
-              placeholder="选择一个获取数据的平台"
-              allowClear
-              onChange={handleOnChangePlatform}
-            >
-              <Option value="wei_bo">微博</Option>
-              <Option value="bai_du">百度</Option>
-            </Select>
+          <Form.Item
+            name="user_sec_id"
+            label="user id"
+            rules={[{ required: true, len: 76 }]}
+          >
+            <Input placeholder="抖音主页链接中的ID" />
           </Form.Item>
 
-          <Form.Item name="category" label="类型" rules={[{ required: true }]}>
-            <Select
-              placeholder="选择热搜类型"
-              allowClear
-              disabled={categories.length === 0}
-            >
-              {categories.map((item) => {
-                return <Option value={item}>{item}</Option>;
-              })}
+          <Form.Item
+            name="data_category"
+            label="数据来源"
+            rules={[{ required: true }]}
+          >
+            <Select placeholder="选择一个数据来源" allowClear>
+              <Option value="user_profile">用户主页数据</Option>
+              <Option value="user_video_works">用户视频作品</Option>
             </Select>
           </Form.Item>
 
