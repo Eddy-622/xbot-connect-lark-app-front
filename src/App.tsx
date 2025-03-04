@@ -13,6 +13,10 @@ export default function App() {
   const [tenantKey, setTenantKey] = useState("");
 
   const [selectSource, setSelectSource] = useState<string>("");
+  const [secUserIdCheckStatus, setsecUserIdCheckStatus] = useState<
+    "" | "success" | "warning" | "error" | "validating"
+  >("");
+
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -86,9 +90,23 @@ export default function App() {
             <Form.Item
               name="user_sec_id"
               label="sec_user_id"
-              rules={[{ required: true, len: 76 }]}
+              validateStatus={secUserIdCheckStatus}
+              help="抖音ID长度为 55位 或 76位"
+              rules={[{ required: true }]}
             >
-              <Input placeholder="抖音主页链接中的ID" />
+              <Input
+                placeholder="抖音主页链接中的ID"
+                onChange={(e) => {
+                  const len = e.target.value.length;
+                  if (len === 55 || len === 76) {
+                    setsecUserIdCheckStatus("success");
+                  } else if (len > 0) {
+                    setsecUserIdCheckStatus("error");
+                  } else {
+                    setsecUserIdCheckStatus("");
+                  }
+                }}
+              />
             </Form.Item>
           )}
 
