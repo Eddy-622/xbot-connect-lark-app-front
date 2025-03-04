@@ -83,6 +83,7 @@ export default function App() {
               name="aweme_id"
               label="视频ID/modal_id"
               rules={[{ required: true, len: 19 }]}
+              help="视频ID长度为19位"
             >
               <Input placeholder="抖音视频链接中的ID" />
             </Form.Item>
@@ -91,7 +92,7 @@ export default function App() {
               name="user_sec_id"
               label="sec_user_id"
               validateStatus={secUserIdCheckStatus}
-              help="抖音ID长度为 55位 或 76位"
+              help="ID长度为 55位 或 76位"
               rules={[{ required: true }]}
             >
               <Input
@@ -112,9 +113,6 @@ export default function App() {
 
           <Flex justify="right">
             <Space size="small">
-              <Button onClick={() => bitable.ui.closeHostContainer()}>
-                取消
-              </Button>
               <Button type="primary" htmlType="submit">
                 下一步
               </Button>
