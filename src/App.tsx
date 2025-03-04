@@ -68,7 +68,7 @@ export default function App() {
               placeholder="选择一个数据来源"
               allowClear
               onChange={(value) => setSelectSource(value)}
-              defaultValue="user_profile"
+              // defaultValue="user_profile"
             >
               <Option value="user_profile">用户主页数据</Option>
               <Option value="user_video_works">用户视频作品</Option>
