@@ -60,9 +60,9 @@ export default function App() {
     <div style={{ 
       display: "flex", 
       flexDirection: "column", 
-      height: "100vh",
+      height: "90vh",
       padding: "16px",
-      background: colors.background,
+      // background: colors.background,
       fontFamily: "-apple-system,BlinkMacSystemFont,Helvetica Neue,Tahoma,PingFang SC,Microsoft Yahei,Arial,Hiragino Sans GB,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji"
     }}>
       <Card 
